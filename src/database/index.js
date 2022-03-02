@@ -1,5 +1,5 @@
-const debug = require("debug")("twitter-app:database");
 const { default: mongoose } = require("mongoose");
+const debug = require("debug")("twitter-app:database");
 
 const connectDataBase = (connectionLogin) =>
   new Promise((resolve, reject) => {
@@ -14,4 +14,4 @@ const connectDataBase = (connectionLogin) =>
     });
   });
 
-module.export = connectDataBase;
+module.exports = connectDataBase;
