@@ -6,7 +6,6 @@ const startServer = require("./server/startServer");
 
 const serverPort = process.env.PORT || 3004;
 const loginCredentials = process.env.LOGIN_CREDENTIALS;
-console.log(serverPort);
 
 (async () => {
   try {
