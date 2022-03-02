@@ -1,0 +1,43 @@
+{
+  "name": "twitter-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "start-dev": "nodemon src/index.js -q",
+    "test": "jest",
+    "test-watch": "jest --watchAll",
+    "test-coverage": "jest --watchAll --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js",
+      "!src/index.js",
+      "!src/server/startServer.js"
+    ]
+  },
+  "dependencies": {
+    "debug": "^4.3.3",
+    "dotenv": "^16.0.0",
+    "eslint-config-prettier": "^8.4.0",
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.4.0",
+    "mongoose": "^6.2.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  }
+}
