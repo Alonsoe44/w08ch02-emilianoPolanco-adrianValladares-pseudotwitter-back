@@ -7,11 +7,12 @@ const getTweetsController = async (req, res) => {
 
 const createTweetController = async (req, res, next) => {
   try {
-    const tweetCreation = await Tuit.create(req.body);
+    const { tweet } = req.body;
+    const tweetCreation = await Tuit.create(tweet);
     res.status(201).json(tweetCreation);
   } catch (error) {
     error.status = 400;
-    error.message = "Your did a bad request, robot not created";
+    error.message = "Bad request, tweet not created";
     next(error);
   }
 };
