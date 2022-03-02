@@ -41,7 +41,7 @@ describe("Given the entire app", () => {
   });
 
   describe("When it receives a post request at '/tweets' with an invalid tweet", () => {
-    test("Then it should return a 500 and message 'Bad request, tweet not created'", async () => {
+    test("Then it should return a 400 and message 'Bad request, tweet not created'", async () => {
       const expectedMessage = "Bad request, tweet not created";
       const postedTweet = {
         text: "dlkjaldskjfbaldkjbalsdkjbcalksdjbcalsdkbasldkvjbaldskvbaldjfhbv alkdjfnvñadsjfasjdfñalksdfñalkdsnfñladnfñlsdnfañsdnfalsdnfañsdlkfasdlfñasdifpaodsinfnapsdjnfasdnfapdsoifna`dsovinfnañlkvnñzcxlkvnadinva`diovnaòdinvñadkvnañdfnañdi",
@@ -54,6 +54,19 @@ describe("Given the entire app", () => {
         .expect(400);
 
       expect(body.message).toBe(expectedMessage);
+    });
+  });
+
+  describe("When it receives a post request at '/tweets' with a valid tweet", () => {
+    test("Then it should return a 201 and the new tweet should be created'", async () => {
+      const postedTweet = {
+        text: "proper tweet, should work",
+      };
+      await request(app)
+        .post("/tweets")
+        .set("Content-Type", "application/json")
+        .send({ tweet: postedTweet })
+        .expect(201);
     });
   });
 });
