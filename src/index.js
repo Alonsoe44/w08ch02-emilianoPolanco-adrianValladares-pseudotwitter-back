@@ -1,14 +1,17 @@
 require("dotenv").config();
 const debug = require("debug")("twitter-app:root");
-const connecDataBase = require("./database/index");
+const connecDataBase = require("./database");
+const app = require("./server");
+const startServer = require("./server/startServer");
 
 const serverPort = process.env.PORT || 3004;
-const loginCredendials = process.env.LOGIN_CREDENTIALS;
-debug(loginCredendials + "43");
+const loginCredentials = process.env.LOGIN_CREDENTIALS;
+console.log(serverPort);
+
 (async () => {
   try {
-    // await connecDataBase(loginCredendials);
-    // await startSrever(app, serverPort);
+    await connecDataBase(loginCredentials);
+    await startServer(app, serverPort);
   } catch (error) {
     debug("The server is broken");
   }
